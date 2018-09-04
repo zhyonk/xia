@@ -1,0 +1,174 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.springframework.samples</groupId>
+	<artifactId>oauth</artifactId>
+
+	<parent>
+		<groupId>cn.zhyonk</groupId>
+		<artifactId>xia</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<properties>
+
+		<!-- Generic properties -->
+		<java.version>1.6</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- Spring -->
+		<spring-framework.version>3.2.3.RELEASE</spring-framework.version>
+
+		<!-- Hibernate / JPA -->
+		<hibernate.version>4.2.1.Final</hibernate.version>
+
+		<!-- Logging -->
+		<logback.version>1.0.13</logback.version>
+		<slf4j.version>1.7.5</slf4j.version>
+
+		<!-- Test -->
+		<junit.version>4.11</junit.version>
+		<druid.version>1.1.0</druid.version>
+		<fastjson.version>1.2.8</fastjson.version>
+		<mybaitsplus.version>2.1.9</mybaitsplus.version>
+		<mysql.version>5.1.38</mysql.version>
+		<log4j.version>1.2.17</log4j.version>
+		<slf4j.version>1.7.19</slf4j.version>
+	</properties>
+
+	<dependencies>
+		<!-- Spring and Transactions -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+
+		<!-- Mybatis-Plus -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus</artifactId>
+			<version>${mybaitsplus.version}</version>
+		</dependency>
+
+		<!-- Mysql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.version}</version>
+		</dependency>
+
+		<!-- Druid -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>${druid.version}</version>
+		</dependency>
+
+		<!-- FastJson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+
+		<!-- Log -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Logging with SLF4J & LogBack -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+
+		<!-- Test Artifacts -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring-framework.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<finalName>oauth</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
+			<!-- tomcat 插件，mvn tomcat:run -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<version>1.1</version>
+				<configuration>
+					<path>/</path>
+					<port>8080</port>
+					<uriEncoding>UTF-8</uriEncoding>
+					<warFile>${project.build.directory}/${project.build.finalName}.war</warFile>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
