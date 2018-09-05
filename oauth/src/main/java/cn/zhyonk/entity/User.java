@@ -16,6 +16,10 @@ import cn.zhyonk.enums.TypeEnum;
 public class User extends SuperEntity {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * 用户名
      */
     // 这样可以注入 LIKE 查询 @TableField(condition = SqlCondition.LIKE)

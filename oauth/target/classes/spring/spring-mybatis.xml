@@ -54,8 +54,8 @@
         <!-- 自动扫描Mapping.xml文件 -->
         <property name="mapperLocations" value="classpath:mybatis/*/*.xml"/>
         <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
-        <property name="typeAliasesPackage" value="com.baomidou.springmvc.model.*"/>
-        <property name="typeEnumsPackage" value="com.baomidou.springmvc.model.enums"/>
+        <property name="typeAliasesPackage" value="cn.zhyonk.entity.*"/>
+        <property name="typeEnumsPackage" value="cn.zhyonk.entity.enums"/>
         <property name="plugins">
             <array>
                 <!-- 分页插件配置 -->
@@ -90,13 +90,13 @@
 	    <!-- 全局表为下划线命名设置 true -->
 	    <!-- <property name="dbColumnUnderline" value="true" /> -->
         <property name="metaObjectHandler">
-            <bean class="com.baomidou.springmvc.common.MyMetaObjectHandler" />
+            <bean class="cn.zhyonk.common.MyMetaObjectHandler" />
         </property>
 	</bean>
 
     <!-- MyBatis 动态扫描  -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.baomidou.springmvc.mapper"/>
+        <property name="basePackage" value="cn.zhyonk.mapper"/>
     </bean>
 
     <!-- 配置事务管理 -->
@@ -130,7 +130,7 @@
 
     <!-- 配置切面 -->
     <aop:config>
-        <aop:pointcut id="transactionPointcut" expression="execution(* com.baomidou.springmvc.service..*.*(..))"/>
+        <aop:pointcut id="transactionPointcut" expression="execution(* cn.zhyonk.service..*.*(..))"/>
         <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice"/>
     </aop:config>
 
