@@ -6,10 +6,13 @@
 
     <!-- 引入属性文件 -->
     <context:property-placeholder location="classpath:config.properties"/>
-	
 
     <!-- Service包(自动注入) -->
-    <context:component-scan base-package="cn.zhyonk.service"/>
-
+    <context:component-scan base-package="cn.zhyonk.*"/>
+    
+	<context:annotation-config/>
+	<bean class="cn.zhyonk.shiro.ShiroConfiguration"/>
+	
     <import resource="classpath:spring/spring-mybatis.xml"/>
+    <import resource="classpath:spring/spring-redis.xml"/>
 </beans>
