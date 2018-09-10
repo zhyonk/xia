@@ -17,7 +17,7 @@ public interface IUserService extends IService<User> {
 	String checkLogin(Login login);
 
 
-	User getUserByLoginId(String loginId);
+	User getUserByOpenId(String loginId);
 
 
 	Set<String> loadRoles(String clientKey);

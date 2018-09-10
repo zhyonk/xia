@@ -31,7 +31,7 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @Configuration    // 配置注解，自动在本类上下文加载一些环境变量信息
 @EnableSwagger2   // 使swagger2生效
 @EnableWebMvc
-@ComponentScan(basePackages = {"cn.zhyonk.controller"})  //需要扫描的包路径
+@ComponentScan(basePackages = {"cn.zhyonk.*"})  //需要扫描的包路径
 public class SwaggerConfig extends WebMvcConfigurationSupport{
 
 	@Bean
@@ -40,16 +40,11 @@ public class SwaggerConfig extends WebMvcConfigurationSupport{
                 .apiInfo(apiInfo())
                 .select()   // 选择那些路径和api会生成document
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
-                .paths(paths())
-                //.apis(RequestHandlerSelectors.any())  // 对所有api进行监控
+                .apis(RequestHandlerSelectors.any())  // 对所有api进行监控
                 //.paths(PathSelectors.any())   // 对所有路径进行监控
 .build()
                 .securitySchemes(securitySchemes())
                 .securityContexts(securityContexts());
-    }
-
-    private Predicate<String> paths() {
-        return or(regex("/person.*"));
     }
 
     private List<ApiKey> securitySchemes() {

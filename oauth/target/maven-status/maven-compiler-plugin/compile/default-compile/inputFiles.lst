@@ -1,4 +1,6 @@
+C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\entity\RolePermission.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\entity\enums\LoginResponseCode.java
+C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\common\utils\DESUtils.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\interceptor\LoginInterceptor.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\common\utils\JedisUtils.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\common\SuperEntity.java
@@ -8,6 +10,7 @@ C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\common\utils\ObjectUtils.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\shiro\AgileSubjectFactory.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\shiro\HmacRealm.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\enums\TypeEnum.java
+C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\entity\Permission.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\mapper\UserMapper.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\common\utils\SpringContextHolder.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\common\ResponseCode.java
@@ -24,10 +27,12 @@ C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\common\MyMetaObjectHandler.ja
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\entity\RedisLogin.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\common\ResponseVO.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\shiro\HmacToken.java
+C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\common\CorsFilter.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\service\IUserService.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\shiro\ShiroConfiguration.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\annotation\IsLogin.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\common\result\JsonResult.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\controller\BaseController.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\entity\User.java
+C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\entity\Role.java
 C:\eclips\zhyonk\xia\oauth\src\main\java\cn\zhyonk\entity\enums\TypeEnum.java

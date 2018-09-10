@@ -88,7 +88,7 @@
 		<!-- Oracle需要添加该项 -->
 	    <!-- <property name="dbType" value="oracle" /> -->
 	    <!-- 全局表为下划线命名设置 true -->
-	    <!-- <property name="dbColumnUnderline" value="true" /> -->
+	    <property name="dbColumnUnderline" value="true" />
         <property name="metaObjectHandler">
             <bean class="cn.zhyonk.common.MyMetaObjectHandler" />
         </property>
@@ -123,7 +123,7 @@
             <tx:method name="load*" propagation="REQUIRED" read-only="true"/>
             <tx:method name="search*" propagation="REQUIRED" read-only="true"/>
             <tx:method name="datagrid*" propagation="REQUIRED" read-only="true"/>
-
+            <tx:method name="check*" propagation="REQUIRED" read-only="true"/>
             <tx:method name="*" propagation="REQUIRED" read-only="true"/>
         </tx:attributes>
     </tx:advice>

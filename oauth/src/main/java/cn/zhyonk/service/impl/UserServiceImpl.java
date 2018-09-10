@@ -3,10 +3,12 @@ package cn.zhyonk.service.impl;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 
+import cn.zhyonk.common.utils.DESUtils;
 import cn.zhyonk.entity.Login;
 import cn.zhyonk.entity.User;
 import cn.zhyonk.mapper.UserMapper;
@@ -20,34 +22,31 @@ import cn.zhyonk.service.IUserService;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
+	@Autowired
+	private UserMapper userMapper;
+	
 	@Override
 	public String checkLogin(Login login) {
-		login.getLoginName();
-		login.getPassword();
-		
-		return "123456";
+		String phone = login.getPhone();
+		String password = DESUtils.getDecryptString(login.getPassword());
+		String openid = userMapper.checkLogin(phone,password);
+		return openid;
 	}
 
 	@Override
-	public User getUserByLoginId(String loginId) {
-		User user = new User();
-		user.setId(12000L);
-		user.setAge(25);
-		user.setName("zhyonk");
-		return null;
+	public User getUserByOpenId(String uid) {
+		User selectById = userMapper.selectByOprnId(uid);
+		return selectById;
 	}
 
 	@Override
-	public Set<String> loadRoles(String clientKey) {
-		// TODO Auto-generated method stub
+	public Set<String> loadRoles(String uid) {
 		Set<String> hashSet = new HashSet<>();
-		hashSet.add("aa");
-		hashSet.add("bb");
 		return hashSet;
 	}
 
 	@Override
-	public Set<String> loadPermissions(String clientKey) {
+	public Set<String> loadPermissions(String uid) {
 		Set<String> hashSet = new HashSet<>();
 		hashSet.add("aa");
 		hashSet.add("bb");

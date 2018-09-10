@@ -21,7 +21,7 @@ public class Login implements Serializable{
 	/**
 	 * 登录用户名
 	 */
-	private String loginName;
+	private String phone;
 	
 	/**
 	 * 登录密码
@@ -32,9 +32,9 @@ public class Login implements Serializable{
 		super();
 	}
 	
-	public Login(String uid, String loginName, String password){
+	public Login(String uid, String phone, String password){
 		this.uid = uid;
-		this.loginName = loginName;
+		this.phone = phone;
 		this.password = password;
 	}
 	
@@ -44,11 +44,11 @@ public class Login implements Serializable{
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
-	public String getLoginName() {
-		return loginName;
+	public String getPhone() {
+		return phone;
 	}
-	public void setLoginName(String loginName) {
-		this.loginName = loginName;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	public String getPassword() {
 		return password;

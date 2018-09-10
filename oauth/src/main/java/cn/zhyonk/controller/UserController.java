@@ -1,5 +1,8 @@
 package cn.zhyonk.controller;
 
+import java.util.Enumeration;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.zhyonk.annotation.IsLogin;
+import cn.zhyonk.common.utils.DESUtils;
 import cn.zhyonk.common.utils.JedisUtils;
 import cn.zhyonk.common.utils.ResponseData;
 import cn.zhyonk.entity.Login;
@@ -19,41 +23,43 @@ import cn.zhyonk.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-
 @RestController
 @RequestMapping(value="/user")
 @Api(value="用户管理")
 public class UserController extends BaseController{
-
 	@Autowired
 	private IUserService userService;
 	
-	
 	@IsLogin
-	@RequestMapping(value="/login",method=RequestMethod.POST)
+	@RequestMapping(value="/login")
 	@ApiOperation(value = "用户登录")
-	public ResponseData login(HttpServletRequest request, @RequestParam( "loginName") String loginName,
-            @RequestParam("password") String password) {
+	public ResponseData login(HttpServletRequest request) {
+		Map parameterMap = request.getParameterMap();
+		System.out.println(parameterMap.toString());
+		String phone = request.getParameter("phone");
+		String password = request.getParameter("password");
+		ResponseData responseData;
+		responseData = ResponseData.ok();
+		String encryptPassword = DESUtils.getEncryptString(password);
         Login login = new Login();
-        login.setLoginName(loginName);
-        login.setPassword(password);
-        ResponseData responseData = ResponseData.ok();
+        login.setPhone(phone);
+        login.setPassword(encryptPassword);
         //先到数据库验证
-        String loginId = userService.checkLogin(login);
-        if(null != loginId) {
-            User user = userService.getUserByLoginId(loginId);
-            login.setUid(loginId);
+        String openid = userService.checkLogin(login);
+        if(null != openid) {
+            User user = userService.getUserByOpenId(openid);
+            login.setUid(openid);
             long refTime = System.currentTimeMillis()+60L*1000L*50L;;
             //给用户jwt加密生成token
             String token = JWT.sign(login,refTime);
             //封装成对象返回给客户端
             responseData.putDataValue("token", token);
-            responseData.putDataValue("uid", 123465);
+            responseData.putDataValue("uid", openid);
             RedisLogin rlogin = new RedisLogin();
             rlogin.setRefTime(refTime);
             rlogin.setToken(token);
-            rlogin.setUid("123456");
-            JedisUtils.setObject("123456", rlogin, 0);
+            rlogin.setUid(openid);
+            JedisUtils.setObject(openid, rlogin, 0);
         }
         else{
             responseData =  ResponseData.customerError();
