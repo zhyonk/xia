@@ -1,14 +1,13 @@
 package cn.zhyonk.controller;
 
-import java.util.Enumeration;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.zhyonk.annotation.IsLogin;
@@ -55,6 +54,7 @@ public class UserController extends BaseController{
             //封装成对象返回给客户端
             responseData.putDataValue("token", token);
             responseData.putDataValue("uid", openid);
+            responseData.putDataValue("exp", refTime);
             RedisLogin rlogin = new RedisLogin();
             rlogin.setRefTime(refTime);
             rlogin.setToken(token);
@@ -72,6 +72,24 @@ public class UserController extends BaseController{
 	public ResponseData test(HttpServletRequest request) {
         ResponseData responseData = ResponseData.ok();
         responseData.putDataValue("test status", "success");
+        return responseData;
+	}
+	
+	@RequestMapping(value="/getUserInfo")
+	@ApiOperation(value = "获取用户的信息")
+	public ResponseData getUserInfo(HttpServletRequest request,HttpServletResponse httpServletResponse) {
+		httpServletResponse.setHeader("Access-Control-Allow-Origin", "*");
+		ResponseData responseData = null;
+		String token = request.getParameter("token");
+		if (token!=null) {
+			Login login = JWT.unsign(token, Login.class);
+			String openid = login.getUid();
+			User user = userService.getUserByOpenId(openid);
+			responseData = ResponseData.ok();
+			responseData.putDataValue("userInfo", user);
+			return responseData;
+		}
+		responseData = ResponseData.unauthorized();
         return responseData;
 	}
 	@RequestMapping(value="/regist",method=RequestMethod.POST)
