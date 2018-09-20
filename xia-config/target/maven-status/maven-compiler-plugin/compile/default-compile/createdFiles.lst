@@ -1,0 +1,8 @@
+cn\zhyonk\annotation\IsLogin.class
+cn\zhyonk\shiro\ShiroConfiguration.class
+cn\zhyonk\shiro\HmacFilter.class
+cn\zhyonk\shiro\AgileSubjectFactory.class
+cn\zhyonk\shiro\zhyonkSubjectFactory.class
+cn\zhyonk\shiro\HmacToken.class
+cn\zhyonk\interceptor\LoginInterceptor.class
+cn\zhyonk\jwt\JWT.class

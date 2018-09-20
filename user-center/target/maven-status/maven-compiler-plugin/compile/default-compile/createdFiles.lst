@@ -1,0 +1,6 @@
+cn\zhyonk\entity\Role.class
+cn\zhyonk\entity\Permission.class
+cn\zhyonk\entity\Login.class
+cn\zhyonk\entity\User.class
+cn\zhyonk\entity\RolePermission.class
+cn\zhyonk\entity\RedisLogin.class
