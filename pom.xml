@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>cn.zhyonk</groupId>
@@ -257,11 +257,13 @@
 		</dependency>
   </dependencies>
   <modules>
-  	<module>oauth</module>
-  	<module>adminWeb</module>
-  	<module>wechatWeb</module>
+  	<module>xia-oauth</module>
+  	<module>xia-admin</module>
+  	<module>xia-wechat</module>
   	<module>xia-config</module>
   	<module>user-center</module>
   	<module>xia-entity</module>
+    <module>xia-api</module>
+    <module>xia-common</module>
   </modules>
 </project>

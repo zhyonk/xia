@@ -1,6 +1,2 @@
-C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\entity\Role.java
-C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\entity\RolePermission.java
-C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\entity\RedisLogin.java
-C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\entity\Login.java
-C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\entity\Permission.java
-C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\entity\User.java
+C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\rpc\service\impl\UserServiceImpl.java
+C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\mapper\UserMapper.java

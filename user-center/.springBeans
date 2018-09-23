@@ -10,6 +10,7 @@
 	</configs>
 	<autoconfigs>
 		<config>src/main/resources/spring/spring.xml</config>
+		<config>src/main/resources/spring/dubbo-provider.xml</config>
 		<config>src/main/resources/spring/spring-mvc.xml</config>
 	</autoconfigs>
 	<configSets>

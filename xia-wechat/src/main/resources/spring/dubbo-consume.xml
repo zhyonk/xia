@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="usercenter-consume" owner="zhyonk"></dubbo:application>
+    
+    <!--zookeeper注册中心 -->
+    <dubbo:registry address="zookeeper://192.168.99.100:2181"/>
+
+	<!-- use dubbo protocol to export service on port 20880 -->
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
+    <dubbo:reference id="userService" interface="cn.zhyonk.rpc.api.UserService" ></dubbo:reference>
+    <dubbo:reference id="oauthService" interface="cn.zhyonk.rpc.api.OauthService" ></dubbo:reference>
+
+</beans>

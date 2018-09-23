@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>xia-oauth</artifactId>
+	<packaging>war</packaging>
+	<parent>
+		<groupId>cn.zhyonk</groupId>
+		<artifactId>xia</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<properties>
+		<!-- Generic properties -->
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<servlet.version>2.5</servlet.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>cn.zhyonk</groupId>
+			<artifactId>xia-entity</artifactId>
+			<version>${xia.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.zhyonk</groupId>
+			<artifactId>xia-api</artifactId>
+			<version>${xia.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.zhyonk</groupId>
+			<artifactId>xia-config</artifactId>
+			<version>${xia.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.zhyonk</groupId>
+			<artifactId>xia-common</artifactId>
+			<version>${xia.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<finalName>xia-oauth</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
+			<!-- tomcat 插件，mvn tomcat:run -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+				 	<port>8080</port> 
+					<server>tomcat7</server>
+					<username>zhyonk</username>
+					<password>331520</password>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
