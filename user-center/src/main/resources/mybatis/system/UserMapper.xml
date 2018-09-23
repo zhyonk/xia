@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zhyonk.user.mapper.UserMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap"
+		type="cn.zhyonk.entity.User">
+		<id column="user_id" property="user_id" />
+		<result column="open_id" property="open_id" />
+		<result column="user_phone" property="user_phone" />
+		<result column="role_id" property="role_id" />
+		<result column="user_name" property="user_name" />
+		<result column="sex" property="sex" />
+		<result column="status" property="status" />
+		<result column="is_authorize" property="is_authorize" />
+		<result column="position_id" property="position_id" />
+		<result column="tag_list" property="tag_list" />
+		<result column="praise_average" property="praise_average" />
+		<result column="create_time" property="create_time" />
+		<result column="update_time" property="update_time" />
+		<result column="is_del" property="is_del" />
+		<result column="password" property="password" />
+	</resultMap>
+	
+	<select id="checkLogin" parameterType="java.lang.String" resultType="java.lang.String">
+		select open_id From user WHERE 
+			user_phone = #{phone}
+		AND
+		 	password = #{password}
+	</select>
+	
+	<select id="selectByOprnId" parameterType="java.lang.String" resultType="cn.zhyonk.entity.User">
+		select * From user WHERE 
+			open_id = #{openid}
+	</select>
+	
+	
+
+</mapper>

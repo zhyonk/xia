@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	
+    <dubbo:application name="oauth-rpc-provider"/>
+
+    <!-- use multicast registry center to export service -->
+    <dubbo:registry address="zookeeper://192.168.99.100:2181"/>
+
+    <!-- use dubbo protocol to export service on port 20880 -->
+    <dubbo:protocol name="dubbo" port="20880"/>
+
+    <!-- service implementation, as same as regular local bean -->
+    <bean id="oauthService" class="cn.zhyonk.oauth.rpc.service.impl.OauthServiceImpl"/>
+
+    <!-- declare the service interface to be exported -->
+    <dubbo:service interface="cn.zhyonk.oauth.rpc.api.OauthService" ref="oauthService"/>
+    
+</beans>
