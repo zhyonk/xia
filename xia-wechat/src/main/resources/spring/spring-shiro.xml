@@ -51,7 +51,7 @@
                 /static/** = anon  
                 /resources/** = anon 
                 /user/** = anon
-                /api/** = hmacFilter
+                /** = hmacFilter
             </value>
         </property>
         <property name="filters">

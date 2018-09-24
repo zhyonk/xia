@@ -1,0 +1,3 @@
+cn\zhyonk\oauth\controller\IndexController.class
+cn\zhyonk\oauth\rpc\service\impl\OauthServiceImpl.class
+cn\zhyonk\oauth\mapper\OauthMapper.class
