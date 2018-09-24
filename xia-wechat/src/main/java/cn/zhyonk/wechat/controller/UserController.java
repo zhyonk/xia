@@ -14,6 +14,7 @@ import cn.zhyonk.annotation.IsLogin;
 import cn.zhyonk.common.utils.DESUtils;
 import cn.zhyonk.common.utils.JedisUtils;
 import cn.zhyonk.common.utils.ResponseData;
+import cn.zhyonk.common.utils.StringUtils;
 import cn.zhyonk.controller.BaseController;
 import cn.zhyonk.entity.Login;
 import cn.zhyonk.entity.RedisLogin;
@@ -40,32 +41,37 @@ public class UserController extends BaseController{
 		String phone = request.getParameter("phone");
 		String password = request.getParameter("password");
 		ResponseData responseData;
-		responseData = ResponseData.ok();
-		String encryptPassword = DESUtils.getEncryptString(password);
-        Login login = new Login();
-        login.setPhone(phone);
-        login.setPassword(encryptPassword);
-        //先到数据库验证
-        String openid = userService.checkLogin(login);
-        if(null != openid) {
-            User user = userService.getUserByOpenId(openid);
-            login.setUid(openid);
-            long refTime = System.currentTimeMillis()+60L*1000L*50L;;
-            //给用户jwt加密生成token
-            String token = JWT.sign(login,refTime);
-            //封装成对象返回给客户端
-            responseData.putDataValue("token", token);
-            responseData.putDataValue("uid", openid);
-            responseData.putDataValue("exp", refTime);
-            RedisLogin rlogin = new RedisLogin();
-            rlogin.setRefTime(refTime);
-            rlogin.setToken(token);
-            rlogin.setUid(openid);
-            JedisUtils.setObject(openid, rlogin, 0);
-        }
-        else{
-            responseData =  ResponseData.customerError();
-        }   
+		if (!StringUtils.isEmpty(password)) {
+			responseData = ResponseData.ok();
+			String encryptPassword = DESUtils.getEncryptString(password);
+	        Login login = new Login();
+	        login.setPhone(phone);
+	        login.setPassword(encryptPassword);
+	        //先到数据库验证
+	        String openid = userService.checkLogin(login);
+	        if(null != openid) {
+	            User user = userService.getUserByOpenId(openid);
+	            login.setUid(openid);
+	            long refTime = System.currentTimeMillis()+60L*1000L*50L;;
+	            //给用户jwt加密生成token
+	            String token = JWT.sign(login,refTime);
+	            //封装成对象返回给客户端
+	            responseData.putDataValue("token", token);
+	            responseData.putDataValue("uid", openid);
+	            responseData.putDataValue("exp", refTime);
+	            RedisLogin rlogin = new RedisLogin();
+	            rlogin.setRefTime(refTime);
+	            rlogin.setToken(token);
+	            rlogin.setUid(openid);
+	            JedisUtils.setObject(openid, rlogin, 0);
+	        }
+	        else{
+	            responseData =  ResponseData.customerError();
+	        }   
+		}else {
+			responseData = ResponseData.badRequest();
+		}
+		
         return responseData;
 	}
 

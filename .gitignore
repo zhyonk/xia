@@ -7,3 +7,4 @@ xia-common/target/
 xia-api/target/
 xia-oauth/target/xia-oauth/WEB-INF/classes/spring/spring-mvc.xml
 *.war
+*.xml

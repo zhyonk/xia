@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 
 import cn.zhyonk.common.utils.DESUtils;
+import cn.zhyonk.common.utils.JedisUtils;
+import cn.zhyonk.common.utils.StringUtils;
 import cn.zhyonk.entity.Login;
 import cn.zhyonk.entity.User;
 import cn.zhyonk.oauth.mapper.OauthMapper;
@@ -54,10 +56,8 @@ public class OauthServiceImpl extends ServiceImpl<OauthMapper, User> implements 
 	}
 
 	@Override
-	public boolean checkToken() {
-		
-		return false;
+	public boolean checkToken(String openid, String token) {
+		String redis_token = JedisUtils.get(openid);
+		return StringUtils.equals(token, redis_token);
 	}
-
-
 }

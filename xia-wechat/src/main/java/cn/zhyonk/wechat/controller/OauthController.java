@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.zhyonk.annotation.IsLogin;
@@ -30,7 +29,8 @@ public class OauthController extends BaseController{
 	@ApiOperation(value = "首页")
 	public ResponseData login(HttpServletRequest request) {
 		String token = request.getParameter("token");
-		if (oauthService.checkToken()) {
+		String openid = request.getParameter("openid");
+		if (oauthService.checkToken(openid,token)) {
 			
 		}else {
 			
@@ -40,4 +40,12 @@ public class OauthController extends BaseController{
         return responseData;
 	}
 
+	@IsLogin
+	@RequestMapping(value="/test")
+	@ApiOperation(value = "首页")
+	public ResponseData test(HttpServletRequest request) {
+        ResponseData responseData = ResponseData.ok();
+        responseData.putDataValue("index", "success go to index");
+        return responseData;
+	}
 }

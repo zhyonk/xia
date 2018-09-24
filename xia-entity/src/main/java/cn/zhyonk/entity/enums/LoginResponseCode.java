@@ -5,6 +5,7 @@ import java.util.Map;
 
 import cn.zhyonk.common.ResponseVO;
 
+
 public enum LoginResponseCode {
 	USERID_NOT_NULL(3001,"用户id不能为空."), 
 	LOGIN_TOKEN_NOT_NULL(3002,"登录token不能为空."),
