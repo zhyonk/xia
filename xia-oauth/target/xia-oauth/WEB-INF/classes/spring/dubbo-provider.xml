@@ -16,6 +16,6 @@
     <bean id="oauthService" class="cn.zhyonk.oauth.rpc.service.impl.OauthServiceImpl"/>
 
     <!-- declare the service interface to be exported -->
-    <dubbo:service interface="cn.zhyonk.oauth.rpc.api.OauthService" ref="oauthService"/>
+    <dubbo:service interface="cn.zhyonk.rpc.api.OauthService" ref="oauthService"/>
     
 </beans>

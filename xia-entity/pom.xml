@@ -12,8 +12,11 @@
 	<properties>
 	</properties>
 	<dependencies>
-	
-	
+		<dependency>
+			<groupId>cn.zhyonk</groupId>
+			<artifactId>xia-common</artifactId>
+			<version>${xia.version}</version>
+		</dependency>	
 	</dependencies>
     <build>
        <defaultGoal>install</defaultGoal>

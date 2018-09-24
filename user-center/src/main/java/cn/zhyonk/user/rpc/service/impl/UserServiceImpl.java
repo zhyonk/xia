@@ -11,7 +11,7 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import cn.zhyonk.common.utils.DESUtils;
 import cn.zhyonk.entity.Login;
 import cn.zhyonk.entity.User;
-import cn.zhyonk.rpc.api.UserService;
+import cn.zhyonk.service.UserService;
 import cn.zhyonk.user.mapper.UserMapper;
 
 /**

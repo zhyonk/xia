@@ -2,7 +2,6 @@ package cn.zhyonk.user.mapper;
 
 
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository; 
 
 import cn.zhyonk.common.SuperMapper;
 import cn.zhyonk.entity.User;

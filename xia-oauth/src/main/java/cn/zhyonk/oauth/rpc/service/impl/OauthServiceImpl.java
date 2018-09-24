@@ -53,5 +53,11 @@ public class OauthServiceImpl extends ServiceImpl<OauthMapper, User> implements 
 		return hashSet;
 	}
 
+	@Override
+	public boolean checkToken() {
+		
+		return false;
+	}
+
 
 }

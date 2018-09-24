@@ -26,12 +26,7 @@
 		</dependency>
 		<dependency>
 			<groupId>cn.zhyonk</groupId>
-			<artifactId>xia-config</artifactId>
-			<version>${xia.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>cn.zhyonk</groupId>
-			<artifactId>xia-common</artifactId>
+			<artifactId>xia-service</artifactId>
 			<version>${xia.version}</version>
 		</dependency>
 	</dependencies>
