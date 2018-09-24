@@ -18,6 +18,11 @@
 			<artifactId>xia-entity</artifactId>
 			<version>${xia.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>cn.zhyonk</groupId>
+			<artifactId>xia-common</artifactId>
+			<version>${xia.version}</version>
+		</dependency>
 	</dependencies>	
 	
     <build>

@@ -25,5 +25,6 @@ public interface OauthService extends IService<User> {
 
 	Set<String> loadPermissions(String clientKey);
 
+	boolean checkToken();
 
 }
