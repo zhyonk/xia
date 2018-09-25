@@ -19,8 +19,11 @@ import cn.zhyonk.controller.BaseController;
 import cn.zhyonk.entity.Login;
 import cn.zhyonk.entity.RedisLogin;
 import cn.zhyonk.entity.User;
+import cn.zhyonk.entity.WechatUser;
 import cn.zhyonk.jwt.JWT;
+import cn.zhyonk.rpc.api.LocalUserService;
 import cn.zhyonk.rpc.api.UserService;
+import cn.zhyonk.wechat.service.WeixinService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -32,12 +35,13 @@ public class UserController extends BaseController{
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private LocalUserService localUserService;
+	
 	@IsLogin
 	@RequestMapping(value="/login")
 	@ApiOperation(value = "用户登录")
 	public ResponseData login(HttpServletRequest request) {
-		Map parameterMap = request.getParameterMap();
-		System.out.println(parameterMap.toString());
 		String phone = request.getParameter("phone");
 		String password = request.getParameter("password");
 		ResponseData responseData;
@@ -93,8 +97,12 @@ public class UserController extends BaseController{
 			Login login = JWT.unsign(token, Login.class);
 			String openid = login.getUid();
 			User user = userService.getUserByOpenId(openid);
+			WechatUser wechatInfo = localUserService.selectUserInfoByOpenid(openid);
 			responseData = ResponseData.ok();
 			responseData.putDataValue("userInfo", user);
+			if (wechatInfo!=null) {
+				responseData.putDataValue("wechatInfo", wechatInfo);
+			}
 			return responseData;
 		}
 		responseData = ResponseData.unauthorized();
