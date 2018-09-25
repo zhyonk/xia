@@ -88,7 +88,7 @@
 		<!-- Oracle需要添加该项 -->
 	    <!-- <property name="dbType" value="oracle" /> -->
 	    <!-- 全局表为下划线命名设置 true -->
-	    <property name="dbColumnUnderline" value="true" />
+	    <property name="dbColumnUnderline" value="false" />
         <property name="metaObjectHandler">
             <bean class="cn.zhyonk.common.MyMetaObjectHandler" />
         </property>
