@@ -14,7 +14,9 @@
 
     <!-- service implementation, as same as regular local bean -->
     <bean id="userService" class="cn.zhyonk.user.rpc.service.impl.UserServiceImpl"/>
+    <bean id="localUserService" class="cn.zhyonk.user.rpc.service.impl.LocalUserServiceImpl"/>
     <!-- declare the service interface to be exported -->
     <dubbo:service interface="cn.zhyonk.rpc.api.UserService" ref="userService"/>
+    <dubbo:service interface="cn.zhyonk.rpc.api.LocalUserService" ref="localUserService"/>
     
 </beans>

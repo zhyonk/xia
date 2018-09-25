@@ -1,9 +1,12 @@
+cn\zhyonk\entity\WxMenuKey.class
 cn\zhyonk\entity\enums\TypeEnum.class
-cn\zhyonk\entity\Role.class
 cn\zhyonk\entity\Permission.class
 cn\zhyonk\entity\Login.class
 cn\zhyonk\enums\TypeEnum.class
 cn\zhyonk\entity\User.class
 cn\zhyonk\entity\enums\LoginResponseCode.class
 cn\zhyonk\entity\RolePermission.class
+cn\zhyonk\entity\WechatUser.class
+cn\zhyonk\entity\Role.class
+cn\zhyonk\entity\LocalUser.class
 cn\zhyonk\entity\RedisLogin.class

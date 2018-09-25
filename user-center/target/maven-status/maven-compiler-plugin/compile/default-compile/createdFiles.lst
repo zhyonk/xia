@@ -1,2 +1,4 @@
 cn\zhyonk\user\mapper\UserMapper.class
+cn\zhyonk\user\rpc\service\impl\LocalUserServiceImpl.class
 cn\zhyonk\user\rpc\service\impl\UserServiceImpl.class
+cn\zhyonk\user\mapper\LocalUserMapper.class
