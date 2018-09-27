@@ -1,8 +1,13 @@
 package cn.zhyonk.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import cn.zhyonk.common.result.JsonResult;
 
 public class BaseController {
+	
+	public final Logger logger = LoggerFactory.getLogger(this.getClass());
 	/**
      * 渲染失败数据
      *
