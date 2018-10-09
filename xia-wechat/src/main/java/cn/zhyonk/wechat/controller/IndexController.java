@@ -116,5 +116,24 @@ public class IndexController extends BaseController {
 		responseData = ResponseData.unauthorized();
         return responseData;
 	}
+	
+	@RequestMapping(value="/getBannerList")
+	@ApiOperation(value = "获取微信用户的信息")
+	public ResponseData getBannerList(HttpServletRequest request,HttpServletResponse httpServletResponse) {
+		httpServletResponse.setHeader("Access-Control-Allow-Origin", "*");
+		String openid = request.getParameter("openid");
+		ResponseData responseData;
+		if (openid!=null) {
+			WechatUser wechatInfo = localUserService.selectUserInfoByOpenid(openid);
+			responseData = ResponseData.ok();
+			responseData.putDataValue("userInfo", wechatInfo);
+			if (wechatInfo!=null) {
+				responseData.putDataValue("wechatInfo", wechatInfo);
+			}
+			return responseData;
+		}
+		responseData = ResponseData.unauthorized();
+        return responseData;
+	}
 
 }
