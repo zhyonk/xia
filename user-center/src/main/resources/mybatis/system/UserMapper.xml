@@ -29,11 +29,13 @@
 		 	password = #{password}
 	</select>
 	
-	<select id="selectByOprnId" parameterType="java.lang.String" resultType="cn.zhyonk.entity.User">
+	<select id="selectByOpenId" parameterType="java.lang.String" resultType="cn.zhyonk.entity.User">
 		select * From user WHERE 
 			open_id = #{openid}
 	</select>
 	
+	<select id="loadRoles" parameterType="java.lang.String" resultType="java.util.Set">
+		select role_id from user_role WHERE open_id = #{openid}
+	</select>
 	
-
 </mapper>

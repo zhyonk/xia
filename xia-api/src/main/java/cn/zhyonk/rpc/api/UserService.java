@@ -20,7 +20,7 @@ public interface UserService extends IService<User> {
 	User getUserByOpenId(String loginId);
 
 
-	Set<String> loadRoles(String clientKey);
+	Set<String> loadRoles(String openid);
 
 
 	Set<String> loadPermissions(String clientKey);

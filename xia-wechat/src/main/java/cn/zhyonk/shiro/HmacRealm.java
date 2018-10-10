@@ -84,13 +84,13 @@ public class HmacRealm extends AuthorizingRealm {
 	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		String uid = (String) principals.getPrimaryPrincipal();
+		String openid = (String) principals.getPrimaryPrincipal();
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		// 根据客户标识（可以是用户名、app id等等） 查询并设置角色
-		Set<String> roles = userService.loadRoles(uid);
+		Set<String> roles = userService.loadRoles(openid);
 		info.setRoles(roles);
 		// 根据客户标识（可以是用户名、app id等等） 查询并设置权限
-		Set<String> permissions = userService.loadPermissions(uid);
+		Set<String> permissions = userService.loadPermissions(openid);
 		info.setStringPermissions(permissions);
 		return info;
 	}
