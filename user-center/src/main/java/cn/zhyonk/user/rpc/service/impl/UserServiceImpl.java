@@ -35,12 +35,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
 	@Override
 	public User getUserByOpenId(String uid) {
-		User selectById = userMapper.selectByOprnId(uid);
+		User selectById = userMapper.selectByOpenId(uid);
 		return selectById;
 	}
 
 	@Override
-	public Set<String> loadRoles(String uid) {
+	public Set<String> loadRoles(String openid) {
+		userMapper.loadRoles(openid);
 		Set<String> hashSet = new HashSet<>();
 		return hashSet;
 	}
