@@ -1,6 +1,7 @@
 package cn.zhyonk.user.mapper;
 
 
+import java.util.List;
 import java.util.Set;
 
 import org.apache.ibatis.annotations.Param;
@@ -18,6 +19,6 @@ public interface UserMapper extends SuperMapper<User> {
 
 	User selectByOpenId(@Param(value = "openid") String openid);
 
-	Set<String> loadRoles(@Param(value = "openid") String openid);
+	List<String> loadRoles(@Param(value = "openid") String openid);
 
 }
