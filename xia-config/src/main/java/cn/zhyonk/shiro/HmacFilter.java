@@ -57,7 +57,6 @@ public class HmacFilter extends AccessControlFilter {
 				responseMessage((HttpServletResponse) response, response.getWriter(), responseVO);
 			}
 			try {
-				
 				// 创建令牌
 				AuthenticationToken token = createToken(request, response);
 				Subject subject = getSubject(request, response);

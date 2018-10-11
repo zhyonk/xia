@@ -1,6 +1,7 @@
 package cn.zhyonk.user.rpc.service.impl;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,9 +42,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
 	@Override
 	public Set<String> loadRoles(String openid) {
-		userMapper.loadRoles(openid);
-		Set<String> hashSet = new HashSet<>();
-		return hashSet;
+		List<String> roles = userMapper.loadRoles(openid);
+		Set<String> set = new HashSet<>(roles);
+		return set;
 	}
 
 	@Override
