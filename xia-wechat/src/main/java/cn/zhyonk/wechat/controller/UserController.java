@@ -1,6 +1,7 @@
 package cn.zhyonk.wechat.controller;
 
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,7 +55,8 @@ public class UserController extends BaseController{
 	        //先到数据库验证
 	        String openid = userService.checkLogin(login);
 	        if(null != openid) {
-	            User user = userService.getUserByOpenId(openid);
+	        	Set<String> roles = userService.loadRoles(openid);
+	        	login.setRoles(roles);
 	            login.setUid(openid);
 	            long refTime = System.currentTimeMillis()+60L*1000L*50L;;
 	            //给用户jwt加密生成token

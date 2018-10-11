@@ -1,10 +1,11 @@
 package cn.zhyonk.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import org.apache.shiro.authc.AuthenticationToken;
 
-import net.bytebuddy.asm.Advice.This;
+
 
 public class Login implements Serializable{
 	
@@ -28,14 +29,20 @@ public class Login implements Serializable{
 	 */
 	private String password;
 	
+	/**
+	 * 用户roleid
+	 */
+	private Set<String> roles;
+	
 	public Login(){
 		super();
 	}
 	
-	public Login(String uid, String phone, String password){
+	public Login(String uid, String phone, String password,Set<String> roles){
 		this.uid = uid;
 		this.phone = phone;
 		this.password = password;
+		this.roles = roles;
 	}
 	
 	public String getUid() {
@@ -55,6 +62,14 @@ public class Login implements Serializable{
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Set<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<String> roles) {
+		this.roles = roles;
 	}
 
 }
