@@ -26,6 +26,10 @@ public class Permission extends Model<Permission> {
      */
     private Integer type;
     /**
+     * 权限
+     */
+    private String permission;
+    /**
      * 权限名称
      */
     private String name;
@@ -34,10 +38,21 @@ public class Permission extends Model<Permission> {
      */
     private String url;
     /**
-     * 权限
+     * 图标
      */
-    private String permission;
-
+    private String icon;
+    /**
+     * 排序
+     */
+    private Integer sort;
+    /**
+     * 状态
+     */
+    private Integer state;
+    /**
+     * 前一级id
+     */
+    private Integer pid;
 
     public Long getId() {
         return id;
@@ -78,20 +93,48 @@ public class Permission extends Model<Permission> {
     public void setPermission(String permission) {
         this.permission = permission;
     }
+    
 
-    @Override
+    public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
+	public Integer getSort() {
+		return sort;
+	}
+
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
+
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
+	}
+
+	public Integer getPid() {
+		return pid;
+	}
+
+	public void setPid(Integer pid) {
+		this.pid = pid;
+	}
+
+	@Override
     protected Serializable pkVal() {
         return this.id;
     }
 
-    @Override
-    public String toString() {
-        return "Permission{" +
-        "id=" + id +
-        ", type=" + type +
-        ", name=" + name +
-        ", url=" + url +
-        ", permission=" + permission +
-        "}";
-    }
+	@Override
+	public String toString() {
+		return "Permission [id=" + id + ", type=" + type + ", permission=" + permission + ", name=" + name + ", url="
+				+ url + ", icon=" + icon + ", sort=" + sort + ", state=" + state + ", pid=" + pid + "]";
+	}
 }

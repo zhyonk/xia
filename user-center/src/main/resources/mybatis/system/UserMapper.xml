@@ -35,7 +35,19 @@
 	</select>
 	
 	<select id="loadRoles" parameterType="java.lang.String" resultType="java.lang.String">
-		select DISTINCT role_id from user_role WHERE open_id = #{openid}
+		select name FROM role,user_role WHERE role.id = user_role.role_id and user_role.open_id = #{openid}
+	</select>
+	
+	<select id="loadPermissions" parameterType="java.lang.String" resultType="cn.zhyonk.entity.Permission">
+		select permission.* 
+		FROM
+		user_role,role_permission,permission 
+		WHERE 
+		role_permission.role_id = user_role.role_id 
+		and
+		role_permission.per_id =permission.id 
+		and 
+		user_role.open_id = #{openid}
 	</select>
 	
 </mapper>

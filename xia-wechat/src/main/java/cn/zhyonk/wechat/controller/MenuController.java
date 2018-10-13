@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 import cn.zhyonk.annotation.IsLogin;
 import cn.zhyonk.common.utils.ResponseData;
 import cn.zhyonk.controller.BaseController;
+import cn.zhyonk.entity.Permission;
 import cn.zhyonk.rpc.api.OauthService;
 import cn.zhyonk.rpc.api.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-
 
 @RestController
 @RequestMapping(value="/menu")
@@ -33,10 +33,9 @@ public class MenuController extends BaseController{
 	@ApiOperation(value = "获取Mine下的菜单")
 	public ResponseData getMineMenu(HttpServletRequest request) {
 		String openid = (String) SecurityUtils.getSubject().getPrincipal();
-		Set<String> roles = userService.loadRoles(openid);
-		
-
+		Set<Permission> permissions = userService.getPermission(openid);
 		ResponseData responseData = ResponseData.ok();
+		responseData.putDataValue("menu", permissions);
         return responseData;
 	}
 }

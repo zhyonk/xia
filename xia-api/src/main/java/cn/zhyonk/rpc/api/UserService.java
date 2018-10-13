@@ -5,6 +5,7 @@ import java.util.Set;
 import com.baomidou.mybatisplus.service.IService;
 
 import cn.zhyonk.entity.Login;
+import cn.zhyonk.entity.Permission;
 import cn.zhyonk.entity.User;
 
 /**
@@ -23,7 +24,10 @@ public interface UserService extends IService<User> {
 	Set<String> loadRoles(String openid);
 
 
-	Set<String> loadPermissions(String clientKey);
+	Set<String> loadPermissions(String openid);
+
+
+	Set<Permission> getPermission(String openid);
 
 
 }
