@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.google.common.collect.Lists;
 
 import cn.zhyonk.common.utils.DESUtils;
 import cn.zhyonk.entity.Login;
+import cn.zhyonk.entity.Permission;
 import cn.zhyonk.entity.User;
 import cn.zhyonk.rpc.api.UserService;
 import cn.zhyonk.user.mapper.UserMapper;
@@ -43,17 +45,25 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 	@Override
 	public Set<String> loadRoles(String openid) {
 		List<String> roles = userMapper.loadRoles(openid);
+		
 		Set<String> set = new HashSet<>(roles);
 		return set;
 	}
 
 	@Override
-	public Set<String> loadPermissions(String uid) {
-		Set<String> hashSet = new HashSet<>();
-		hashSet.add("aa");
-		hashSet.add("bb");
-		return hashSet;
+	public Set<String> loadPermissions(String openid) {
+		List<Permission> permissionList = userMapper.loadPermissions(openid);
+		Set<String> perSet = new HashSet<>();
+		for (Permission per : permissionList) {
+			perSet.add(per.getPermission());
+		}
+		return perSet;
 	}
-
-
+	
+	@Override
+	public Set<Permission> getPermission(String openid) {
+		List<Permission> permissionList = userMapper.loadPermissions(openid);
+		Set<Permission> perSet = new HashSet<Permission>(permissionList);
+		return perSet;
+	}
 }
