@@ -15,10 +15,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 
+import cn.zhyonk.common.utils.JedisUtils;
 import cn.zhyonk.common.utils.PropertiesUtils;
 import cn.zhyonk.common.utils.ResponseData;
 import cn.zhyonk.controller.BaseController;
 import cn.zhyonk.entity.Login;
+import cn.zhyonk.entity.RedisLogin;
 import cn.zhyonk.entity.User;
 import cn.zhyonk.entity.WechatUser;
 import cn.zhyonk.jwt.JWT;
@@ -53,9 +55,9 @@ public class IndexController extends BaseController {
 	@ApiOperation(value = "首页")
 	public ModelAndView loginPost(HttpServletRequest request) {
 		PropertiesUtils config = new PropertiesUtils("xia.properties");
-		if (request.getParameter("openId") != null) {
+		if (request.getParameter("openId") != null && request.getParameter("token")!=null) {
 			String url = config.readProperty("vue.url");
-			return new ModelAndView("redirect:" + url+"/reservation/"+request.getParameter("openId"));
+			return new ModelAndView("redirect:" + url+"/reservation?openid="+request.getParameter("openId")+"&token="+request.getParameter("token"));
 		}
 		String baseUrl = config.readProperty("xia.baseURL");
 		baseUrl = baseUrl + "/wechat/getAccessCode";
@@ -84,7 +86,8 @@ public class IndexController extends BaseController {
 				logger.info("<<openId>>: " + wuser.getOpenId() + " 该openid不存在，插入中....");
 				localUserService.insert(wuser);
 			}
-			return new ModelAndView("redirect:" + baseUrl + "/wechat/index?openId=" + wuser.getOpenId());
+			String redisToken = createToken(wuser.getOpenId());
+			return new ModelAndView("redirect:" + baseUrl + "/wechat/index?openId=" + wuser.getOpenId()+"&token="+redisToken);
 		} catch (WxErrorException e) {
 			WxError error = e.getError();
 			int errorCode = error.getErrorCode();
@@ -97,7 +100,21 @@ public class IndexController extends BaseController {
 		ResponseData responseData = ResponseData.badRequest();
 		return new ModelAndView(responseData.getMessage());
 	}
-	
+	//创建token
+	private String createToken(String openid) {
+		 Login login = new Login();
+		 login.setUid(openid);
+		 long refTime = System.currentTimeMillis()+60L*1000L*50L;;
+		//给用户jwt加密生成token
+         String token = JWT.sign(login,refTime);
+         //封装成对象返回给客户端
+         RedisLogin rlogin = new RedisLogin();
+         rlogin.setRefTime(refTime);
+         rlogin.setToken(token);
+         JedisUtils.setObject(openid, rlogin, 0);
+         return token;
+	}
+
 	@RequestMapping(value="/getUserInfo")
 	@ApiOperation(value = "获取微信用户的信息")
 	public ResponseData getUserInfo(HttpServletRequest request,HttpServletResponse httpServletResponse) {
