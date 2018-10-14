@@ -29,6 +29,11 @@
 		 	password = #{password}
 	</select>
 	
+	<select id="checkUser" parameterType="java.lang.String" resultType="cn.zhyonk.entity.User">
+		select * From user WHERE 
+			open_id = #{openid}
+	</select>
+	
 	<select id="selectByOpenId" parameterType="java.lang.String" resultType="cn.zhyonk.entity.User">
 		select * From user WHERE 
 			open_id = #{openid}
