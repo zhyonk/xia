@@ -16,6 +16,8 @@ import cn.zhyonk.entity.User;
 public interface UserService extends IService<User> {
 
 	String checkLogin(Login login);
+	
+	User checkUser(Login login);
 
 
 	User getUserByOpenId(String loginId);

@@ -66,4 +66,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 		Set<Permission> perSet = new HashSet<Permission>(permissionList);
 		return perSet;
 	}
+
+	@Override
+	public User checkUser(Login login) {
+		String openid = login.getPhone();
+		User user = userMapper.checkUser(openid);
+		return user;
+	}
 }
