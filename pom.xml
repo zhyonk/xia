@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>cn.zhyonk</groupId>
-  <artifactId>xia</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
+	<groupId>cn.zhyonk</groupId>
+	<artifactId>xia</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-  <name>xia</name>
-  <url>http://maven.apache.org</url>
+	<name>xia</name>
+	<url>http://maven.apache.org</url>
 
-  <properties>
+	<properties>
 
 		<!-- Generic properties -->
 		<java.version>1.8</java.version>
@@ -41,21 +43,21 @@
 		<zookeeper.version>3.4.13</zookeeper.version>
 	</properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    
-    		<!-- Spring MVC -->
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Spring MVC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring-framework.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>dubbo</artifactId>
@@ -98,7 +100,7 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.7</version>
 		</dependency>
-		
+
 
 		<!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
 		<dependency>
@@ -118,24 +120,24 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.6.5</version>
 		</dependency>
-	 <!-- jwt -->
-	   <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
-	   <dependency>
-		    <groupId>com.auth0</groupId>
-		    <artifactId>java-jwt</artifactId>
-		    <version>2.2.0</version>
-	   </dependency>
-	   <!-- redis -->
-	   <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>2.8.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-redis</artifactId>
-            <version>1.7.2.RELEASE</version>
-        </dependency>
+		<!-- jwt -->
+		<!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+		<!-- redis -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.8.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>1.7.2.RELEASE</version>
+		</dependency>
 		<!--shiro 核心包 -->
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
@@ -255,15 +257,22 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-  </dependencies>
-  <modules>
-  	<module>xia-oauth</module>
-  	<module>xia-admin</module>
-  	<module>xia-wechat</module>
-  	<module>xia-config</module>
-  	<module>user-center</module>
-  	<module>xia-entity</module>
-    <module>xia-api</module>
-    <module>xia-common</module>
-  </modules>
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.6</version>
+		</dependency>
+
+	</dependencies>
+	<modules>
+		<module>xia-oauth</module>
+		<module>xia-admin</module>
+		<module>xia-wechat</module>
+		<module>xia-config</module>
+		<module>user-center</module>
+		<module>xia-entity</module>
+		<module>xia-api</module>
+		<module>xia-common</module>
+	</modules>
 </project>
