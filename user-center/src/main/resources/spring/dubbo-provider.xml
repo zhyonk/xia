@@ -18,5 +18,6 @@
     <!-- declare the service interface to be exported -->
     <dubbo:service interface="cn.zhyonk.rpc.api.UserService" ref="userService"/>
     <dubbo:service interface="cn.zhyonk.rpc.api.LocalUserService" ref="localUserService"/>
+    <dubbo:service interface="cn.zhyonk.rpc.api.ShopService" ref="shopService"/>
     
 </beans>

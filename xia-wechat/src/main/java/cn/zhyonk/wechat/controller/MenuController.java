@@ -7,16 +7,16 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cn.zhyonk.annotation.IsLogin;
 import cn.zhyonk.common.utils.ResponseData;
 import cn.zhyonk.controller.BaseController;
 import cn.zhyonk.entity.Permission;
+import cn.zhyonk.entity.Shop;
 import cn.zhyonk.rpc.api.OauthService;
+import cn.zhyonk.rpc.api.ShopService;
 import cn.zhyonk.rpc.api.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -29,6 +29,12 @@ public class MenuController extends BaseController{
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private OauthService oauthService;
+	
+	@Autowired
+	private ShopService shopService;
+	
 	@RequestMapping(value="/getMineMenu")
 	@ApiOperation(value = "获取Mine下的菜单")
 	public ResponseData getMineMenu(HttpServletRequest request) {
@@ -36,6 +42,15 @@ public class MenuController extends BaseController{
 		Set<Permission> permissions = userService.getPermission(openid);
 		ResponseData responseData = ResponseData.ok();
 		responseData.putDataValue("menu", permissions);
+        return responseData;
+	}
+	@RequestMapping(value="/getShopDetail")
+	@ApiOperation(value = "获取商铺详细信息")
+	public ResponseData getShopDetail(HttpServletRequest request) {
+		Integer shopId = 1;
+		Shop shop = shopService.selectShopDetailById(shopId);
+		ResponseData responseData = ResponseData.ok();
+		responseData.putDataValue("shopInfo", shop);
         return responseData;
 	}
 }
