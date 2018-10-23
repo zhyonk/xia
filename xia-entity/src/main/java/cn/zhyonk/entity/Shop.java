@@ -16,115 +16,111 @@ import java.io.Serializable;
  */
 public class Shop extends Model<Shop> {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @TableId(value = "shop_id", type = IdType.AUTO)
-    private Long shopId;
-    /**
-     * 商家名称
-     */
-    @TableField("shop_name")
-    private String shopName;
-    /**
-     * 商家电话
-     */
-    @TableField("shop_phone")
-    private String shopPhone;
-    /**
-     * 商家地址详情
-     */
-    @TableField("shop_address_detail")
-    private String shopAddressDetail;
-    @TableField("shop_img")
-    private String shopImg;
-    @TableField("create_time")
-    private Long createTime;
-    @TableField("update_time")
-    private Long updateTime;
-    @TableField("is_del")
-    private Integer isDel;
+	@TableId(value = "shop_id", type = IdType.AUTO)
+	private Long shopId;
+	/**
+	 * 商家名称
+	 */
+	@TableField("shop_name")
+	private String shopName;
+	/**
+	 * 商家电话
+	 */
+	@TableField("shop_phone")
+	private String shopPhone;
+	/**
+	 * 商家地址详情
+	 */
+	@TableField("shop_address_detail")
+	private String shopAddressDetail;
 
+	@TableField("shop_img")
+	private String shopImg;
 
-    public Long getShopId() {
-        return shopId;
-    }
+	@TableField("create_time")
+	private Long createTime;
 
-    public void setShopId(Long shopId) {
-        this.shopId = shopId;
-    }
+	@TableField("update_time")
+	private Long updateTime;
 
-    public String getShopName() {
-        return shopName;
-    }
+	@TableField("is_del")
+	private Integer isDel;
 
-    public void setShopName(String shopName) {
-        this.shopName = shopName;
-    }
+	public Long getShopId() {
+		return shopId;
+	}
 
-    public String getShopPhone() {
-        return shopPhone;
-    }
+	public void setShopId(Long shopId) {
+		this.shopId = shopId;
+	}
 
-    public void setShopPhone(String shopPhone) {
-        this.shopPhone = shopPhone;
-    }
+	public String getShopName() {
+		return shopName;
+	}
 
-    public String getShopAddressDetail() {
-        return shopAddressDetail;
-    }
+	public void setShopName(String shopName) {
+		this.shopName = shopName;
+	}
 
-    public void setShopAddressDetail(String shopAddressDetail) {
-        this.shopAddressDetail = shopAddressDetail;
-    }
+	public String getShopPhone() {
+		return shopPhone;
+	}
 
-    public String getShopImg() {
-        return shopImg;
-    }
+	public void setShopPhone(String shopPhone) {
+		this.shopPhone = shopPhone;
+	}
 
-    public void setShopImg(String shopImg) {
-        this.shopImg = shopImg;
-    }
+	public String getShopAddressDetail() {
+		return shopAddressDetail;
+	}
 
-    public Long getCreateTime() {
-        return createTime;
-    }
+	public void setShopAddressDetail(String shopAddressDetail) {
+		this.shopAddressDetail = shopAddressDetail;
+	}
 
-    public void setCreateTime(Long createTime) {
-        this.createTime = createTime;
-    }
+	public String getShopImg() {
+		return shopImg;
+	}
 
-    public Long getUpdateTime() {
-        return updateTime;
-    }
+	public void setShopImg(String shopImg) {
+		this.shopImg = shopImg;
+	}
 
-    public void setUpdateTime(Long updateTime) {
-        this.updateTime = updateTime;
-    }
+	public Long getCreateTime() {
+		return createTime;
+	}
 
-    public Integer getIsDel() {
-        return isDel;
-    }
+	public void setCreateTime(Long createTime) {
+		this.createTime = createTime;
+	}
 
-    public void setIsDel(Integer isDel) {
-        this.isDel = isDel;
-    }
+	public Long getUpdateTime() {
+		return updateTime;
+	}
 
-    @Override
-    protected Serializable pkVal() {
-        return this.shopId;
-    }
+	public void setUpdateTime(Long updateTime) {
+		this.updateTime = updateTime;
+	}
 
-    @Override
-    public String toString() {
-        return "Shop{" +
-        ", shopId=" + shopId +
-        ", shopName=" + shopName +
-        ", shopPhone=" + shopPhone +
-        ", shopAddressDetail=" + shopAddressDetail +
-        ", shopImg=" + shopImg +
-        ", createTime=" + createTime +
-        ", updateTime=" + updateTime +
-        ", isDel=" + isDel +
-        "}";
-    }
+	public Integer getIsDel() {
+		return isDel;
+	}
+
+	public void setIsDel(Integer isDel) {
+		this.isDel = isDel;
+	}
+
+	@Override
+	protected Serializable pkVal() {
+		return this.shopId;
+	}
+
+	@Override
+	public String toString() {
+		return "Shop{" + ", shopId=" + shopId + ", shopName=" + shopName + ", shopPhone=" + shopPhone
+				+ ", shopAddressDetail=" + shopAddressDetail + ", shopImg=" + shopImg + ", createTime=" + createTime
+				+ ", updateTime=" + updateTime + ", isDel=" + isDel + "}";
+	}
 }
