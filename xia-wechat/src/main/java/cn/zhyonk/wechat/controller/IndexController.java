@@ -1,5 +1,8 @@
 package cn.zhyonk.wechat.controller;
 
+import java.awt.List;
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,6 +34,8 @@ import cn.zhyonk.wechat.service.WeixinService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import me.chanjar.weixin.common.api.WxConsts;
+import me.chanjar.weixin.common.bean.menu.WxMenu;
+import me.chanjar.weixin.common.bean.menu.WxMenuButton;
 import me.chanjar.weixin.common.bean.result.WxError;
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.mp.bean.result.WxMpOAuth2AccessToken;
@@ -64,6 +69,27 @@ public class IndexController extends BaseController {
 		String url = wxService.oauth2buildAuthorizationUrl(baseUrl, WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
 		System.out.println(url);
 		return new ModelAndView("redirect:" + url);
+	}
+	
+
+	@RequestMapping(value = "/setMenuBtn")
+	@ApiOperation(value = "重设菜单")
+	public ResponseData setMenuBtn(HttpServletRequest request) throws WxErrorException {
+		PropertiesUtils config = new PropertiesUtils("xia.properties");
+		WxMenu wxMenu = new WxMenu();
+		WxMenuButton button = new WxMenuButton();
+		button.setName("首页");
+		button.setType(WxConsts.MenuButtonType.VIEW);
+		String url = config.readProperty("xia.index");
+		button.setUrl(url);
+		ArrayList<WxMenuButton> list = new ArrayList<WxMenuButton>();
+		list.add(button);
+		wxMenu.setButtons(list);
+		wxService.getMenuService().menuCreate(wxMenu);
+		System.out.println("重设菜单成功");
+		ResponseData ok = ResponseData.ok();
+		ok.putDataValue("info", "重设菜单成功");
+		return ok;
 	}
 
 	@RequestMapping(value = "/getAccessCode")
