@@ -19,5 +19,5 @@
     <dubbo:service interface="cn.zhyonk.rpc.api.UserService" ref="userService"/>
     <dubbo:service interface="cn.zhyonk.rpc.api.LocalUserService" ref="localUserService"/>
     <dubbo:service interface="cn.zhyonk.rpc.api.ShopService" ref="shopService"/>
-    
+    <dubbo:service interface="cn.zhyonk.rpc.api.UserRoleService" ref="userRoleService"/>
 </beans>
