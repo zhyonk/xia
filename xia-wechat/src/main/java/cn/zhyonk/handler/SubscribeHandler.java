@@ -5,8 +5,10 @@ import java.util.Map;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 import cn.zhyonk.builder.TextBuilder;
+import cn.zhyonk.entity.UserRole;
 import cn.zhyonk.entity.WechatUser;
 import cn.zhyonk.rpc.api.LocalUserService;
+import cn.zhyonk.rpc.api.UserRoleService;
 import cn.zhyonk.wechat.service.WeixinService;
 import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.mp.bean.kefu.WxMpKefuMessage;
@@ -29,6 +31,9 @@ public class SubscribeHandler extends AbstractHandler {
 
     @Autowired
     private LocalUserService localUserService;
+    
+    @Autowired
+    private UserRoleService userRoleService;
 
     @Autowired
     private WeixinService wxUserService;
@@ -45,13 +50,16 @@ public class SubscribeHandler extends AbstractHandler {
         WxMpUser userWxInfo = weixinService.getUserService().userInfo(wxMessage.getFromUser(), null);
 
         if (userWxInfo != null) {
-
             WechatUser user = new WechatUser().cast(userWxInfo);
             user.setIsDel(2);
             try {
                 localUserService.insert(user);
             } catch (Exception e) {
                 localUserService.updateById(user);
+                UserRole userRole = new UserRole();
+                userRole.setOpenId(wxMessage.getFromUser());
+                userRole.setRoleId(3l);
+                userRoleService.insertOrUpdate(userRole);
                 this.logger.info("新关注用户 OPENID 存入数据库: " + wxMessage.getFromUser());
             }
         }
