@@ -62,6 +62,7 @@ public class SetNgrokConfig {
 		properties.setProperty("xia.baseURL", url83 + "/xia-wechat");
 		properties.setProperty("vue.index", url84);
 		properties.setProperty("vue.url", url84);
+		properties.setProperty("xia.index", url83 + "/xia-wechat/wechat/index");
 		properties.store(new FileWriter(new File(path)), "Update data");
 		String readText = IOUtils.readText(path);
 		IOUtils.writeText(path, readText.replaceAll("\\\\", ""), false);
