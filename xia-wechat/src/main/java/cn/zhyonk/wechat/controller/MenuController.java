@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cn.zhyonk.common.utils.ResponseData;
 import cn.zhyonk.controller.BaseController;
+import cn.zhyonk.entity.Banner;
 import cn.zhyonk.entity.Permission;
 import cn.zhyonk.entity.Shop;
 import cn.zhyonk.rpc.api.OauthService;
@@ -51,6 +52,15 @@ public class MenuController extends BaseController{
 		Shop shop = shopService.selectShopDetailById(shopId);
 		ResponseData responseData = ResponseData.ok();
 		responseData.putDataValue("shopInfo", shop);
+        return responseData;
+	}
+	
+	@RequestMapping(value="/getBannerList")
+	@ApiOperation(value = "获取Banner信息")
+	public ResponseData getBannerList(HttpServletRequest request) {
+		Set<Banner> list = shopService.getBannerList();
+		ResponseData responseData = ResponseData.ok();
+		responseData.putDataValue("bannerList", list);
         return responseData;
 	}
 }
