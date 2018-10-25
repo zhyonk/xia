@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import cn.zhyonk.entity.WechatUser;
+import cn.zhyonk.rpc.api.LocalUserService;
 import cn.zhyonk.wechat.service.WeixinService;
 import me.chanjar.weixin.common.session.WxSessionManager;
 import me.chanjar.weixin.mp.api.WxMpService;
@@ -22,8 +23,8 @@ import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
 @Component
 public class UnsubscribeHandler extends AbstractHandler {
 
-//    @Autowired
-//    private LocalUserServiceImpl localUserService;
+    @Autowired
+    private LocalUserService localUserService;
 
     @Autowired
     private WeixinService wxUserService;
@@ -38,7 +39,7 @@ public class UnsubscribeHandler extends AbstractHandler {
         WxMpUser wxMpUser = wxUserService.getUserService().userInfo(openId);
         WechatUser user = new WechatUser().cast(wxMpUser);
         user.setIsDel(1);
-//        localUserService.updateById(user);
+        localUserService.updateById(user);
         return null;
     }
 }
