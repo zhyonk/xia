@@ -4,6 +4,7 @@ import java.util.Set;
 
 import com.baomidou.mybatisplus.service.IService;
 
+import cn.zhyonk.entity.Banner;
 import cn.zhyonk.entity.Login;
 import cn.zhyonk.entity.User;
 

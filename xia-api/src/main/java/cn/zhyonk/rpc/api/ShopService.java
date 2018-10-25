@@ -1,6 +1,10 @@
 package cn.zhyonk.rpc.api;
 
+import cn.zhyonk.entity.Banner;
 import cn.zhyonk.entity.Shop;
+
+import java.util.Set;
+
 import com.baomidou.mybatisplus.service.IService;
 
 /**
@@ -8,10 +12,14 @@ import com.baomidou.mybatisplus.service.IService;
  * 商家表 服务类
  * </p>
  *
- * @author Yanghu
+ * @author zhyonk
  * @since 2018-10-22
  */
 public interface ShopService extends IService<Shop> {
 
 	Shop selectShopDetailById(Integer shopId);
+
+
+	Set<Banner> getBannerList();
+
 }
