@@ -1,22 +1,16 @@
 package cn.zhyonk.wechat.controller;
 
-import java.awt.List;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.mapper.Wrapper;
 
 import cn.zhyonk.common.utils.JedisUtils;
 import cn.zhyonk.common.utils.PropertiesUtils;
@@ -24,7 +18,6 @@ import cn.zhyonk.common.utils.ResponseData;
 import cn.zhyonk.controller.BaseController;
 import cn.zhyonk.entity.Login;
 import cn.zhyonk.entity.RedisLogin;
-import cn.zhyonk.entity.User;
 import cn.zhyonk.entity.WechatUser;
 import cn.zhyonk.jwt.JWT;
 import cn.zhyonk.rpc.api.LocalUserService;
