@@ -22,6 +22,19 @@
 		<result column="password" property="password" />
 	</resultMap>
 	
+	<resultMap id="UserCard"
+		type="cn.zhyonk.entity.IndexUserCardInfo">
+		<result column="open_id" property="openId" />
+		<result column="user_phone" property="userPhone" />
+		<result column="user_name" property="userName" />
+		<result column="headImgUrl" property="headImgUrl" />
+		<result column="tag_list" property="tagList" />
+		<result column="praise_average" property="praiseAverage" />
+		<result column="product_price" property="productPrice" />
+		<result column="sales" property="sales" />
+		<result column="record" property="record" />
+	</resultMap>
+	
 	<select id="checkLogin" parameterType="java.lang.String" resultType="java.lang.String">
 		select open_id From user WHERE 
 			user_phone = #{phone}
@@ -53,6 +66,21 @@
 		role_permission.per_id =permission.id 
 		and 
 		user_role.open_id = #{openid}
+	</select>
+	
+	<select id='getWorkUserList' resultMap="UserCard">
+		SELECT 
+		open_id,user_phone,
+		user_name,local_user.headImgUrl,tag_list,praise_average,product.product_price,sales,count(reservation_record.user_id) as 'record' 
+		from 
+		user,position,position_project_realtion,product,works_show,reservation_record,local_user 
+		WHERE 
+		user.position_id =position.position_id 
+		AND position_project_realtion.position_id = position.position_id 
+		and position_project_realtion.project_id = product.product_id 
+		and user.open_id = works_show.user_id
+		and works_show.user_id = user.open_id
+		and user.open_id = local_user.openId
 	</select>
 	
 </mapper>
