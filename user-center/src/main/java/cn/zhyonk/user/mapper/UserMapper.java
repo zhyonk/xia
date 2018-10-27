@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.apache.ibatis.annotations.Param;
 import cn.zhyonk.common.SuperMapper;
+import cn.zhyonk.entity.IndexUserCardInfo;
 import cn.zhyonk.entity.Permission;
 import cn.zhyonk.entity.User;
 
@@ -25,6 +26,8 @@ public interface UserMapper extends SuperMapper<User> {
 	List<String> loadRoles(@Param(value = "openid") String openid);
 
 	List<Permission> loadPermissions(@Param(value = "openid") String openid);
+
+	Set<IndexUserCardInfo> getWorkUserList();
 	
 
 }

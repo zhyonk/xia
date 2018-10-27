@@ -1,6 +1,7 @@
 package cn.zhyonk.rpc.api;
 
 import cn.zhyonk.entity.Banner;
+import cn.zhyonk.entity.IndexUserCardInfo;
 import cn.zhyonk.entity.Shop;
 
 import java.util.Set;
@@ -19,7 +20,7 @@ public interface ShopService extends IService<Shop> {
 
 	Shop selectShopDetailById(Integer shopId);
 
-
 	Set<Banner> getBannerList();
 
+	Set<IndexUserCardInfo> getWorkUserList();
 }
