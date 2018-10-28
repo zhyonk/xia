@@ -2,6 +2,7 @@ package cn.zhyonk.wechat.controller;
 
 
 
+import java.util.ArrayList;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,12 +12,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mysql.fabric.xmlrpc.base.Array;
+
 import cn.zhyonk.common.utils.ResponseData;
+import cn.zhyonk.common.utils.StringUtils;
 import cn.zhyonk.controller.BaseController;
 import cn.zhyonk.entity.Banner;
 import cn.zhyonk.entity.IndexUserCardInfo;
 import cn.zhyonk.entity.Permission;
 import cn.zhyonk.entity.Shop;
+import cn.zhyonk.entity.UserTag;
 import cn.zhyonk.rpc.api.OauthService;
 import cn.zhyonk.rpc.api.ShopService;
 import cn.zhyonk.rpc.api.UserService;
@@ -69,8 +74,27 @@ public class MenuController extends BaseController{
 	@ApiOperation(value = "获取首页设计师卡片信息")
 	public ResponseData getUserCardList(HttpServletRequest request) {
 		Set<IndexUserCardInfo> list = shopService.getWorkUserList();
+		if (list!=null) {
+			for (IndexUserCardInfo info : list) {
+				ArrayList<UserTag> tagList = new ArrayList<UserTag>();
+				String tags = info.getTagList();
+				if (!StringUtils.isEmpty(tags)) {
+					String[] tagArr = tags.split(",");
+					for (String tagId : tagArr) {
+						if (tagId!="" && tagId!=null) {
+							UserTag tag = shopService.getTagById(tagId);
+							if (tag!=null) {
+								tagList.add(tag);
+							}
+						}
+					}
+					info.setTagNameList(tagList);
+				}
+			}
+		}
+		
 		ResponseData responseData = ResponseData.ok();
-		responseData.putDataValue("orkUserCardList", list);
+		responseData.putDataValue("workUserCardList", list);
         return responseData;
 	}
 }

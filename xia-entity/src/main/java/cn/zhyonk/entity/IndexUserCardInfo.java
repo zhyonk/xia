@@ -1,11 +1,17 @@
 package cn.zhyonk.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 
 public class IndexUserCardInfo extends Model<IndexUserCardInfo> {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@TableField("open_id")
 	private String openId;
@@ -25,6 +31,9 @@ public class IndexUserCardInfo extends Model<IndexUserCardInfo> {
 	@TableField("praise_average")
 	private String praiseAverage;
 	
+	@TableField("position_name")
+	private String positionName;
+	
 	@TableField("product_price")
 	private String productPrice;
 	
@@ -33,6 +42,37 @@ public class IndexUserCardInfo extends Model<IndexUserCardInfo> {
 	
 	@TableField("record")
 	private String record;
+	
+	@TableField("workRecordCount")
+	private String workRecordCount;
+	
+	public String getWorkRecordCount() {
+		return workRecordCount;
+	}
+
+	public void setWorkRecordCount(String workRecordCount) {
+		this.workRecordCount = workRecordCount;
+	}
+
+	private ArrayList<UserTag> tagNameList;
+
+	public String getPositionName() {
+		return positionName;
+	}
+
+	public ArrayList<UserTag> getTagNameList() {
+		return tagNameList;
+	}
+
+
+	public void setTagNameList(ArrayList<UserTag> tagNameList) {
+		this.tagNameList = tagNameList;
+	}
+
+
+	public void setPositionName(String positionName) {
+		this.positionName = positionName;
+	}
 
 	public String getOpenId() {
 		return openId;

@@ -28,11 +28,13 @@
 		<result column="user_phone" property="userPhone" />
 		<result column="user_name" property="userName" />
 		<result column="headImgUrl" property="headImgUrl" />
+		<result column="position_name" property="positionName" />
 		<result column="tag_list" property="tagList" />
 		<result column="praise_average" property="praiseAverage" />
 		<result column="product_price" property="productPrice" />
 		<result column="sales" property="sales" />
 		<result column="record" property="record" />
+		<result column="workRecordCount" property="workRecordCount" />
 	</resultMap>
 	
 	<select id="checkLogin" parameterType="java.lang.String" resultType="java.lang.String">
@@ -71,9 +73,11 @@
 	<select id='getWorkUserList' resultMap="UserCard">
 		SELECT 
 		open_id,user_phone,
-		user_name,local_user.headImgUrl,tag_list,praise_average,product.product_price,sales,count(reservation_record.user_id) as 'record' 
+		user_name,local_user.headImgUrl,position.position_name,tag_list,praise_average,product.product_price,sales,
+		count(reservation_record.user_id) as 'record',
+		count(works_show.user_id) as workRecordCount
 		from 
-		user,position,position_project_realtion,product,works_show,reservation_record,local_user 
+		user,position,position_project_realtion,product,works_show,reservation_record,local_user
 		WHERE 
 		user.position_id =position.position_id 
 		AND position_project_realtion.position_id = position.position_id 
