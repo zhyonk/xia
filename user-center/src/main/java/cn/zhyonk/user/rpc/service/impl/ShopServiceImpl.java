@@ -4,6 +4,7 @@ import cn.zhyonk.entity.Banner;
 import cn.zhyonk.entity.IndexUserCardInfo;
 import cn.zhyonk.entity.Shop;
 import cn.zhyonk.entity.User;
+import cn.zhyonk.entity.UserTag;
 import cn.zhyonk.rpc.api.ShopService;
 import cn.zhyonk.user.mapper.BannerMapper;
 import cn.zhyonk.user.mapper.ShopMapper;
@@ -56,6 +57,12 @@ public class ShopServiceImpl extends ServiceImpl<ShopMapper, Shop> implements Sh
 	public Set<IndexUserCardInfo> getWorkUserList() {
 		Set<IndexUserCardInfo> list = userMapper.getWorkUserList();
 		return list;
+	}
+
+	@Override
+	public UserTag getTagById(String id) {
+		UserTag tag = userTagMapper.getTagById(id);
+		return tag;
 	}
 	
 }
