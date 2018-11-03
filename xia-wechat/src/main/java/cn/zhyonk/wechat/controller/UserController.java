@@ -1,15 +1,17 @@
 package cn.zhyonk.wechat.controller;
 
-import java.util.Map;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import cn.zhyonk.annotation.IsLogin; 
 import cn.zhyonk.common.utils.DESUtils;
@@ -18,13 +20,13 @@ import cn.zhyonk.common.utils.ResponseData;
 import cn.zhyonk.common.utils.StringUtils;
 import cn.zhyonk.controller.BaseController;
 import cn.zhyonk.entity.Login;
+import cn.zhyonk.entity.MemberCard;
 import cn.zhyonk.entity.RedisLogin;
 import cn.zhyonk.entity.User;
 import cn.zhyonk.entity.WechatUser;
 import cn.zhyonk.jwt.JWT;
 import cn.zhyonk.rpc.api.LocalUserService;
 import cn.zhyonk.rpc.api.UserService;
-import cn.zhyonk.wechat.service.WeixinService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -115,6 +117,15 @@ public class UserController extends BaseController{
 	public ResponseData regist(HttpServletRequest request) {
         ResponseData responseData = ResponseData.ok();
         responseData.putDataValue("test status", "success");
+        return responseData;
+	}
+	@RequestMapping(value="/getMemberCard",method=RequestMethod.GET)
+	@ApiOperation(value = "获取客户会员卡")
+	public ResponseData getMemberCard(HttpServletRequest request) {
+		String openid = request.getParameter("openId");
+		List<MemberCard> list = userService.selectMemberCardList(openid);
+        ResponseData responseData = ResponseData.ok();
+        responseData.putDataValue("memberCardInfo", list);
         return responseData;
 	}
 }
