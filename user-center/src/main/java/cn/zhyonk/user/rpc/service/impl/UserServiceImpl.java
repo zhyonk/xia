@@ -11,9 +11,11 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 
 import cn.zhyonk.common.utils.DESUtils;
 import cn.zhyonk.entity.Login;
+import cn.zhyonk.entity.MemberCard;
 import cn.zhyonk.entity.Permission;
 import cn.zhyonk.entity.User;
 import cn.zhyonk.rpc.api.UserService;
+import cn.zhyonk.user.mapper.MemberCardMapper;
 import cn.zhyonk.user.mapper.UserMapper;
 
 /**
@@ -26,6 +28,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
 	@Autowired
 	private UserMapper userMapper;
+	
+	@Autowired
+	private MemberCardMapper memberCardMapper;
 	
 	@Override
 	public String checkLogin(Login login) {
@@ -71,5 +76,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 		String openid = login.getPhone();
 		User user = userMapper.checkUser(openid);
 		return user;
+	}
+	
+	@Override
+	public List<MemberCard> selectMemberCardList(String openid) {
+		List<MemberCard> list = memberCardMapper.selectMemberCardList(openid);
+		return list;
 	}
 }

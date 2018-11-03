@@ -1,10 +1,12 @@
 package cn.zhyonk.rpc.api;
 
+import java.util.List;
 import java.util.Set;
 
 import com.baomidou.mybatisplus.service.IService;
 
 import cn.zhyonk.entity.Login;
+import cn.zhyonk.entity.MemberCard;
 import cn.zhyonk.entity.Permission;
 import cn.zhyonk.entity.User;
 
@@ -30,6 +32,8 @@ public interface UserService extends IService<User> {
 
 
 	Set<Permission> getPermission(String openid);
+
+	List<MemberCard> selectMemberCardList(String openid);
 
 
 }
