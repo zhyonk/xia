@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import cn.zhyonk.common.SuperMapper;
 import cn.zhyonk.entity.MemberCard;
+import cn.zhyonk.entity.MemberCardInfo;
 
 /**
  * <p>
@@ -19,5 +20,7 @@ public interface MemberCardMapper extends SuperMapper<MemberCard> {
 
 	
 	List<MemberCard> selectMemberCardList(@Param(value = "openid") String openid);
+
+	MemberCardInfo getMemberCardByNumber(@Param(value = "number") String number);
 
 }
