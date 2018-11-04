@@ -21,6 +21,7 @@ import cn.zhyonk.common.utils.StringUtils;
 import cn.zhyonk.controller.BaseController;
 import cn.zhyonk.entity.Login;
 import cn.zhyonk.entity.MemberCard;
+import cn.zhyonk.entity.MemberCardInfo;
 import cn.zhyonk.entity.RedisLogin;
 import cn.zhyonk.entity.User;
 import cn.zhyonk.entity.WechatUser;
@@ -124,6 +125,16 @@ public class UserController extends BaseController{
 	public ResponseData getMemberCard(HttpServletRequest request) {
 		String openid = request.getParameter("openId");
 		List<MemberCard> list = userService.selectMemberCardList(openid);
+        ResponseData responseData = ResponseData.ok();
+        responseData.putDataValue("memberCardInfo", list);
+        return responseData;
+	}
+	@RequestMapping(value="/getMemberCardByNumber",method=RequestMethod.GET)
+	@ApiOperation(value = "通过会员号获取客户会员卡")
+	
+	public ResponseData getMemberCardByNumber(HttpServletRequest request) {
+		String number = request.getParameter("number");
+		MemberCardInfo list = userService.getMemberCardByNumber(number);
         ResponseData responseData = ResponseData.ok();
         responseData.putDataValue("memberCardInfo", list);
         return responseData;
