@@ -12,6 +12,7 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import cn.zhyonk.common.utils.DESUtils;
 import cn.zhyonk.entity.Login;
 import cn.zhyonk.entity.MemberCard;
+import cn.zhyonk.entity.MemberCardInfo;
 import cn.zhyonk.entity.Permission;
 import cn.zhyonk.entity.User;
 import cn.zhyonk.rpc.api.UserService;
@@ -81,6 +82,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 	@Override
 	public List<MemberCard> selectMemberCardList(String openid) {
 		List<MemberCard> list = memberCardMapper.selectMemberCardList(openid);
+		return list;
+	}
+
+	@Override
+	public MemberCardInfo getMemberCardByNumber(String number) {
+		MemberCardInfo list = memberCardMapper.getMemberCardByNumber(number);
 		return list;
 	}
 }
