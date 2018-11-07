@@ -66,22 +66,22 @@ public class SetNgrokConfig {
 		properties.store(new FileWriter(new File(path)), "Update data");
 		String readText = IOUtils.readText(path);
 		IOUtils.writeText(path, readText.replaceAll("\\\\", ""), false);
-		String authjs = IOUtils.readText("C:\\Users\\Administrator\\Desktop\\1\\xia\\src\\aouth\\auth.js");
-		String[] split = authjs.split("\n");
-		for (int i = 0; i < split.length; i++) {
-			if (split[i].contains("const SERVER_URL")) {
-				split[i] = "const SERVER_URL = '"+url83+"/xia-wechat'";
-			}
-		}
-		IOUtils.fileWriteMultiLine(split, "C:\\Users\\Administrator\\Desktop\\1\\xia\\src\\aouth\\auth.js");
-		String httpjs = IOUtils.readText("C:\\Users\\Administrator\\Desktop\\1\\xia\\src\\axios\\https.js");
-		String[] split2 = httpjs.split("\n");
-		for (int i = 0; i < split2.length; i++) {
-			if (split2[i].contains("axios.defaults.baseURL")) {
-				split2[i] = "axios.defaults.baseURL = '"+url83+"/xia-wechat'";
-			}
-		}
-		IOUtils.fileWriteMultiLine(split2, "C:\\Users\\Administrator\\Desktop\\1\\xia\\src\\axios\\https.js");
+//		String authjs = IOUtils.readText("C:\\Users\\Administrator\\Desktop\\1\\xia\\src\\aouth\\auth.js");
+//		String[] split = authjs.split("\n");
+//		for (int i = 0; i < split.length; i++) {
+//			if (split[i].contains("const SERVER_URL")) {
+//				split[i] = "const SERVER_URL = '"+url83+"/xia-wechat'";
+//			}
+//		}
+//		IOUtils.fileWriteMultiLine(split, "C:\\Users\\Administrator\\Desktop\\1\\xia\\src\\aouth\\auth.js");
+//		String httpjs = IOUtils.readText("C:\\Users\\Administrator\\Desktop\\1\\xia\\src\\axios\\https.js");
+//		String[] split2 = httpjs.split("\n");
+//		for (int i = 0; i < split2.length; i++) {
+//			if (split2[i].contains("axios.defaults.baseURL")) {
+//				split2[i] = "axios.defaults.baseURL = '"+url83+"/xia-wechat'";
+//			}
+//		}
+//		IOUtils.fileWriteMultiLine(split2, "C:\\Users\\Administrator\\Desktop\\1\\xia\\src\\axios\\https.js");
 	}
 
 }

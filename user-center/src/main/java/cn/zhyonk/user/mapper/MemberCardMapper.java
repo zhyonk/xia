@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.baomidou.mybatisplus.mapper.BaseMapper;
+
 import cn.zhyonk.common.SuperMapper;
 import cn.zhyonk.entity.MemberCard;
 import cn.zhyonk.entity.MemberCardInfo;
@@ -16,7 +18,7 @@ import cn.zhyonk.entity.MemberCardInfo;
  * @author Yanghu
  * @since 2018-10-27
  */
-public interface MemberCardMapper extends SuperMapper<MemberCard> {
+public interface MemberCardMapper extends BaseMapper<MemberCard> {
 
 	
 	List<MemberCard> selectMemberCardList(@Param(value = "openid") String openid);

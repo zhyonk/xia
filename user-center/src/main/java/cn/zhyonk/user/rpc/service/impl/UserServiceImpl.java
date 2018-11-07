@@ -43,7 +43,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
 	@Override
 	public User getUserByOpenId(String uid) {
-		User selectById = userMapper.selectByOpenId(uid);
+		User selectById = userMapper.getUserByOpenId(uid);
 		return selectById;
 	}
 

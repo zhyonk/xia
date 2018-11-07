@@ -22,15 +22,11 @@ public interface UserService extends IService<User> {
 	
 	User checkUser(Login login);
 
-
 	User getUserByOpenId(String loginId);
-
 
 	Set<String> loadRoles(String openid);
 
-
 	Set<String> loadPermissions(String openid);
-
 
 	Set<Permission> getPermission(String openid);
 

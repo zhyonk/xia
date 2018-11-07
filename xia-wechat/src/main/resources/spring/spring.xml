@@ -9,12 +9,11 @@
 
 	<util:properties id="wxProperties" location="classpath:wx.properties" />
     <!-- Service包(自动注入) -->
-    <context:component-scan base-package="cn.zhyonk.service.*"/>
-    
+    <context:component-scan base-package="cn.zhyonk.rpc.**"/>
 	<context:annotation-config/>
-	<bean class="cn.zhyonk.shiro.ShiroConfiguration"/>
 	<import resource="classpath:spring/dubbo-consume.xml"/>
     <import resource="classpath:spring/spring-mybatis.xml"/>
-	<import resource="classpath:spring/spring-shiro.xml"/>
     <import resource="classpath:spring/spring-redis.xml"/>
+	<import resource="classpath:spring/spring-shiro.xml"/>
+	<bean class="cn.zhyonk.shiro.ShiroConfiguration"/>
 </beans>

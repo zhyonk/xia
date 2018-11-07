@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zhyonk.user.mapper.BannerMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.zhyonk.entity.Banner">
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="img" property="img" />
+        <result column="url" property="url" />
+        <result column="createTime" property="createTime" />
+        <result column="sort" property="sort" />
+        <result column="isDel" property="isDel" />
+    </resultMap>
+    
+    <select id="checkLogin" parameterType="java.lang.String" resultType="java.lang.String">
+		select open_id From user WHERE 
+			user_phone = #{phone}
+		AND
+		 	password = #{password}
+	</select>
+    <select id="getBannerList" resultMap='BaseResultMap'>
+    	select * from Banner WHERE isDel = 0 ORDER BY sort 
+    </select>
+
+</mapper>

@@ -1,4 +1,17 @@
 C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\rpc\service\impl\LocalUserServiceImpl.java
+C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\rpc\service\impl\UserRoleServiceImpl.java
+C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\mapper\BannerMapper.java
+C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\rpc\service\impl\MemberCardTypeServiceImpl.java
+C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\mapper\ShopMapper.java
+C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\mapper\MemberCardMapper.java
+C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\mapper\UserRoleMapper.java
+C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\mapper\UserTagMapper.java
+C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\mapper\MemberCardTypeMapper.java
+C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\mapper\OauthMapper.java
 C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\rpc\service\impl\UserServiceImpl.java
+C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\rpc\service\impl\OauthServiceImpl.java
+C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\rpc\service\impl\ShopServiceImpl.java
+C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\rpc\service\impl\MemberCardServiceImpl.java
+C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\mapper\PositionMapper.java
 C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\mapper\LocalUserMapper.java
 C:\eclips\zhyonk\xia\user-center\src\main\java\cn\zhyonk\user\mapper\UserMapper.java

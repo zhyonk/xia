@@ -1,5 +1,7 @@
 package cn.zhyonk.user.mapper;
 
+import com.baomidou.mybatisplus.mapper.BaseMapper;
+
 import cn.zhyonk.common.SuperMapper;
 import cn.zhyonk.entity.MemberCardType;
 
@@ -11,6 +13,6 @@ import cn.zhyonk.entity.MemberCardType;
  * @author Yanghu
  * @since 2018-10-27
  */
-public interface MemberCardTypeMapper extends SuperMapper<MemberCardType> {
+public interface MemberCardTypeMapper extends BaseMapper<MemberCardType> {
 
 }

@@ -17,8 +17,8 @@ public interface OauthService extends IService<User> {
 
 	String checkLogin(Login login);
 
-
-	User getUserByOpenId(String loginId);
+//
+//	User getUserByOpenId(String loginId);
 
 
 	Set<String> loadRoles(String clientKey);
