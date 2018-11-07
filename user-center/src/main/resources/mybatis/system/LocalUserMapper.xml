@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zhyonk.user.mapper.LocalUserMapper">
+
+    <!-- 通用查询结果列-->
+    <sql id="Base_Column_List">
+        openId,subscribe,nickname,sex,language,city,province,country,headImgUrl,subscribeTime,unionId,remark,groupId,tagIds,isDel
+    </sql>
+
+    <select id="selectUserInfoByOpenid" resultType="cn.zhyonk.entity.WechatUser">
+        SELECT openId,subscribe,nickname,sex,language,city,province,country,headImgUrl,subscribeTime,unionId,remark,groupId,tagIds,isDel FROM local_user l
+        WHERE l.openId = #{openid} AND ((isDel=0) OR (isDel=2))
+    </select>
+
+    <select id="selectOpenidByZiOpenid" resultType="cn.zhyonk.entity.WechatUser">
+        SELECT fuid FROM local_user l
+        WHERE l.openId = #{openid} AND isDel=0
+    </select>
+    <insert id="insertRelation">
+        INSERT INTO local_user_relation(fuid,ziid) VALUES(#{fuid},#{ziid})
+    </insert>
+
+    <select id="relationIsExist" resultType="Integer">
+        SELECT COUNT(ziid) FROM local_user_relation WHERE ziid=#{ziid}
+    </select>
+
+    <update id="updateRelation">
+        UPDATE local_user_relation SET fuid = #{fuid} WHERE ziid = #{ziid}
+    </update>
+    <select id="isRelation" resultType="Integer">
+        SELECT COUNT(ziid) FROM local_user_relation WHERE ziid=#{fuid} and fuid=#{ziid}
+    </select>
+</mapper>

@@ -35,11 +35,11 @@ public class OauthServiceImpl extends ServiceImpl<OauthMapper, User> implements 
 		return openid;
 	}
 
-	@Override
-	public User getUserByOpenId(String uid) {
-		User selectById = oauthMapper.selectByOprnId(uid);
-		return selectById;
-	}
+//	@Override
+//	public User getUserByOpenId(String uid) {
+//		User selectById = oauthMapper.selectByOprnId(uid);
+//		return selectById;
+//	}
 
 	@Override
 	public Set<String> loadRoles(String uid) {

@@ -12,8 +12,8 @@
 	<mvc:resources mapping="/webjars/**"
 		location="classpath:/META-INF/resources/webjars/" />
 	<!-- Controller包(自动注入) -->
-	<context:component-scan
-		base-package="cn.zhyonk.controller" />
+	<context:component-scan base-package="cn.zhyonk.wechat.*.*" />
+	
 
 	<!-- FastJson注入 -->
 	<mvc:annotation-driven>

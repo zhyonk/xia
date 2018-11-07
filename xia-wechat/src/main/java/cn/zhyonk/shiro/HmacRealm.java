@@ -16,7 +16,8 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RestController;
 
 import cn.zhyonk.common.utils.JedisUtils;
 import cn.zhyonk.common.utils.StringUtils;
@@ -25,7 +26,7 @@ import cn.zhyonk.entity.RedisLogin;
 import cn.zhyonk.entity.User;
 import cn.zhyonk.jwt.JWT;
 import cn.zhyonk.rpc.api.UserService;
-
+@RestController
 public class HmacRealm extends AuthorizingRealm {
 
 	@Autowired
@@ -74,7 +75,6 @@ public class HmacRealm extends AuthorizingRealm {
 		redisLogin = new RedisLogin(uid, token, System.currentTimeMillis() + 60L * 1000L * 30L);
 		JedisUtils.setObject(uid, redisLogin, 0);
 		// 此处可以添加查询数据库检查账号是否存在、是否被锁定、是否被禁用等等逻辑
-
 		User user = userService.getUserByOpenId(uid);
 		return new SimpleAuthenticationInfo(uid, user != null, getName());
 	}

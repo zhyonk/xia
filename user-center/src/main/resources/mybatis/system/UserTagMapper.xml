@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zhyonk.user.mapper.UserTagMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.zhyonk.entity.UserTag">
+        <id column="user_tag_id" property="userTagId" />
+        <result column="tag_name" property="tagName" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="is_del" property="isDel" />
+    </resultMap>
+	<select id='getTagById' parameterType="java.lang.String" resultMap="BaseResultMap">
+		SELECT * from user_tag WHERE user_tag_id = #{id}
+	</select>
+</mapper>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.zhyonk.mapper.UserMapper">
+<mapper namespace="cn.zhyonk.user.mapper.OauthMapper">
 
 	<!-- 通用查询映射结果 -->
 	<resultMap id="BaseResultMap"
@@ -29,7 +29,7 @@
 		 	password = #{password}
 	</select>
 	
-	<select id="selectByOpenId" parameterType="java.lang.String" resultType="cn.zhyonk.entity.User">
+	<select id="selectByOprnId" parameterType="java.lang.String" resultType="cn.zhyonk.entity.User">
 		select * From user WHERE 
 			open_id = #{openid}
 	</select>

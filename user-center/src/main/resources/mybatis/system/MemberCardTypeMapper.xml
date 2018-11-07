@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zhyonk.user.mapper.MemberCardTypeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.zhyonk.entity.MemberCardType">
+        <id column="member_card_type_id" property="memberCardTypeId" />
+        <result column="member_card_type_name" property="memberCardTypeName" />
+        <result column="member_type_price" property="memberTypePrice" />
+        <result column="member_card_type_color" property="memberCardTypeColor" />
+        <result column="valid_time" property="validTime" />
+        <result column="discounts" property="discounts" />
+        <result column="is_forever" property="isForever" />
+        <result column="create_tame" property="createTame" />
+        <result column="update_time" property="updateTime" />
+        <result column="is_del" property="isDel" />
+    </resultMap>
+
+	
+
+</mapper>

@@ -96,7 +96,7 @@
 
     <!-- MyBatis 动态扫描  -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="cn.zhyonk.mapper"/>
+        <property name="basePackage" value="cn.zhyonk.**"/>
     </bean>
 
     <!-- 配置事务管理 -->
@@ -130,7 +130,7 @@
 
     <!-- 配置切面 -->
     <aop:config>
-        <aop:pointcut id="transactionPointcut" expression="execution(* cn.zhyonk.service..*.*(..))"/>
+        <aop:pointcut id="transactionPointcut" expression="execution(* cn.zhyonk.*..*.*(..))"/>
         <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice"/>
     </aop:config>
 
